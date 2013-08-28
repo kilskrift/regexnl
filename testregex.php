@@ -9,7 +9,7 @@ error_reporting( E_ALL );
 
 $groups = Array();
 
-$pattern = "/^(?:\s)*([0-9]*[A-Za-z]*\s*[A-Za-z]+)(?:\s*)((?:[0-9]*\s*[A-Za-z]*[^\s]))?(?:\s)*$/";
+$pattern = "/^(?:\s)*([0-9]*[A-Za-z]*\s*[A-Za-z]+)(?:\s*)([0-9]*\s*[A-Za-z]*[^\s])?(?:\s)*$/";
 
 // leaves multiple spaces within addresses intact for now
 
@@ -41,7 +41,7 @@ foreach( $testcases as $given => $expected ) {
 		echo "'" . $group . "' ";
 	}
 	echo "\ngroups: \n  ";
-	for( $i=1; $i<sizeof($groups); $i++ ){
+	for( $i=0; $i<sizeof($groups); $i++ ){
 		echo "(" . $groups[$i] . ") ";
 	}
 	echo "\n\n";
