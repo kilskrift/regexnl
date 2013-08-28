@@ -31,7 +31,9 @@ $testcases[" 3rd   street   11   bis "] = Array("3rd   street","11   bis");
 $testcases["Singelstraat 10"] = Array("Singelstraat","10");
 $testcases["3e laan 12"] = Array("3e laan","12");
 $testcases["Heeregracht 12bis"] = Array("Heeregracht","12bis");;
-//$testcases["slagen 7e 10" not matched;
+//$testcases["slagen 7e 10" not matched, should be ok though, as never seen yet
+
+$show_all = false;
 
 echo "<pre>";
 foreach( $testcases as $given => $expected ) { 
@@ -41,7 +43,7 @@ foreach( $testcases as $given => $expected ) {
 		echo "'" . $group . "' ";
 	}
 	echo "\ngroups: \n  ";
-	for( $i=0; $i<sizeof($groups); $i++ ){
+	for( $i = ($show_all ?0:1); $i<sizeof($groups); $i++ ){
 		echo "(" . $groups[$i] . ") ";
 	}
 	echo "\n\n";
