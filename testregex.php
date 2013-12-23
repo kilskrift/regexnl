@@ -5,6 +5,7 @@
 </head>
 <body>
 <?php 
+
 /** 
  * regex for handling NL address examples
  * Kristian Madsen, kristian.madsen@sveaekonomi.se
@@ -16,7 +17,7 @@ error_reporting( E_ALL );
 $groups = Array();
 
 // split address into 2 groups, matching from start/end
-$pattern = "/^(?:\s)*([0-9]*[A-ZÄÅÆÖØÜßäåæöøüa-z]*\s*[A-ZÄÅÆÖØÜßäåæöøüa-z]+)(?:\s*)([0-9]*\s*[A-ZÄÅÆÖØÜßäåæöøüa-z]*[^\s])?(?:\s)*$/";
+$pattern = "/^(?:\s)*([0-9]*[A-ZÄÅÆÖØÜßäåæöøüa-z]*\s*[A-ZÄÅÆÖØÜßäåæöøüa-z]+)(?:\s*)([0-9]*\s*[A-ZÄÅÆÖØÜßäåæöøüa-z]*(?:\s*[0-9]*)?[^\s])?(?:\s)*$/";
 //$pattern = "/^(?:\s)*([0-9]*\p{L}*\s*\p{L}+)(?:\s*)([0-9]*\s*\p{L}*[^\s])?(?:\s)*$/";     //if unicode support
 
 // leaves multiple spaces within addresses intact for now
@@ -34,6 +35,8 @@ $testcases["3rd street 11"] = Array("3rd street","11");
 $testcases["3rd street 11bis"] = Array("3rd street","11bis");
 $testcases["3rd street 11 bis"] = Array("3rd street","11 bis");
 $testcases[" 3rd   street   11   bis "] = Array("3rd   street","11   bis");
+$testcases["3rd street 11 bis"] = Array("3rd street","11 bis");
+$testcases["Sankt Larsgatan 1 Lgh 1003"] = Array("Sankt Larsgatan","1 Lgh 1003");
 
 // examples given by getzenned.nl
 $testcases["Singelstraat 10"] = Array("Singelstraat","10");
@@ -67,3 +70,5 @@ echo "</pre>";
 ?>
 </body>
 </html>
+
+
